@@ -1,0 +1,84 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74a5b7ae3e5846548940b09cf16eb409, type: 3}
+  m_Name: Producer1
+  m_EditorClassIdentifier: 
+  upgrades:
+  - AmountNeeded: 25
+    MultiplierToAdd: 1
+    CooldownMultiplier: 0.75
+  - AmountNeeded: 50
+    MultiplierToAdd: 2
+    CooldownMultiplier: 0.5
+  - AmountNeeded: 100
+    MultiplierToAdd: 4
+    CooldownMultiplier: 0
+  - AmountNeeded: 200
+    MultiplierToAdd: 2
+    CooldownMultiplier: 0.5
+  - AmountNeeded: 300
+    MultiplierToAdd: 3
+    CooldownMultiplier: 0
+  - AmountNeeded: 400
+    MultiplierToAdd: 2
+    CooldownMultiplier: 0
+  - AmountNeeded: 500
+    MultiplierToAdd: 5
+    CooldownMultiplier: 0.75
+  - AmountNeeded: 600
+    MultiplierToAdd: 2
+    CooldownMultiplier: 0
+  - AmountNeeded: 666
+    MultiplierToAdd: 6.66
+    CooldownMultiplier: 0
+  - AmountNeeded: 700
+    MultiplierToAdd: 3
+    CooldownMultiplier: 0
+  - AmountNeeded: 800
+    MultiplierToAdd: 8
+    CooldownMultiplier: 0
+  - AmountNeeded: 900
+    MultiplierToAdd: 3
+    CooldownMultiplier: 0
+  - AmountNeeded: 1000
+    MultiplierToAdd: 10
+    CooldownMultiplier: 0
+  - AmountNeeded: 1111
+    MultiplierToAdd: 11.11
+    CooldownMultiplier: 0
+  - AmountNeeded: 1250
+    MultiplierToAdd: 3
+    CooldownMultiplier: 0
+  - AmountNeeded: 1500
+    MultiplierToAdd: 5
+    CooldownMultiplier: 0
+  - AmountNeeded: 2000
+    MultiplierToAdd: 20
+    CooldownMultiplier: 0
+  - AmountNeeded: 2222
+    MultiplierToAdd: 22.22
+    CooldownMultiplier: 0
+  - AmountNeeded: 2500
+    MultiplierToAdd: 7
+    CooldownMultiplier: 0
+  - AmountNeeded: 3000
+    MultiplierToAdd: 3
+    CooldownMultiplier: 0
+  - AmountNeeded: 3333
+    MultiplierToAdd: 33.33
+    CooldownMultiplier: 0
+  - AmountNeeded: 4000
+    MultiplierToAdd: 6
+    CooldownMultiplier: 0
+  - AmountNeeded: 5000
+    MultiplierToAdd: 1000
+    CooldownMultiplier: 0

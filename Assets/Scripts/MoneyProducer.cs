@@ -1,24 +1,25 @@
 using System;
 using System.Collections;
 using UnityEngine;
-
+using System.Collections.Generic;
 public class MoneyProducer : MonoBehaviour
 {
-    
     [SerializeField]
     private Currency baseProductionAmount;
     private Currency currentProductionAmount;
     public TrackedStat Cooldown;
-    private int numberOwned = 0;
+    [HideInInspector] public int numberOwned = 0;
     public bool autoRun = false;
+    [SerializeField] private ProducerUpgradeProgression upgradeProgression;
     //Modify each one so that the starting cost isn't 0 and the curves are all different. Maybe leave the end cost the same though.
     [SerializeField] private AnimationCurve BuyingCost;
-    
-    //need to figure out the best way to use Animation Curve for Currency or do it another way 
+    private List<SerializedUpgrade> upgradesList;
     private float timer = 0;
     
     public void Start()
     {
+        //change to reset instead of starting the game
+        upgradesList = upgradeProgression.GetAllUpgrades();
         currentProductionAmount= new Currency(baseProductionAmount);
         if(autoRun)
             StartProduction();
@@ -32,34 +33,62 @@ public class MoneyProducer : MonoBehaviour
             Buy(amount, price);
         }
     }
+
+    public Currency GetCurrentProductionAmount()
+    {
+        return new Currency(currentProductionAmount * numberOwned);
+    }
+
+    public float GetProductionProgress()
+    {
+        return timer / Cooldown.currentValue;
+    }
+    public Currency GetCost(int amountToBuy)
+    {
+        float val = BuyingCost.Evaluate(numberOwned + amountToBuy);
+        int exponent = (int)val;
+        val -= (int)val;
+        val *= 1000;
+        return new Currency(val,exponent) + new Currency(.5f,0);
+    }
+    
     private void Buy(int amount, Currency price)
     {
         MoneyTracker.SubtractMoney(price);
         numberOwned += amount;
-        
+        CheckAndApplyUpgrades();
     }
     [ContextMenu("Buy 1")]
     public void TEMPBuy()
     {
         AttemptBuy();
     }
+
     
-    public void AddUpgrade(Currency upgrade)
-    {
-        
-    }
     private void StartProduction()
     {
-        
         StartCoroutine(RunToProduce());
     }
 
+    private void CheckAndApplyUpgrades()
+    {
+        var nextUpgrade = upgradesList[0];
+        while (numberOwned >= nextUpgrade.AmountNeeded)
+        {
+            if(nextUpgrade.MultiplierToAdd>1)
+                currentProductionAmount *= nextUpgrade.MultiplierToAdd;
+            if(nextUpgrade.CooldownMultiplier>0)
+                Cooldown.AddModifier(new Modifier(nextUpgrade.CooldownMultiplier));
+            upgradesList.RemoveAt(0);
+            nextUpgrade = upgradesList[0];
+        }
+    }
     private IEnumerator RunToProduce()
     {
-        timer = Cooldown.currentValue;
-        while (timer > 0)
+        timer = 0;
+        while (timer < Cooldown.currentValue)
         {
-            timer -= Time.deltaTime;
+            timer += Time.deltaTime;
             yield return null;
         }
         
@@ -74,15 +103,6 @@ public class MoneyProducer : MonoBehaviour
         MoneyTracker.AddMoney(currentProductionAmount * numberOwned);
     }
 
-    private Currency GetCost(int amountToBuy)
-    {
-        //TEMP
-        //return new Currency( 750,0);
-        float val = BuyingCost.Evaluate(numberOwned + amountToBuy);
-        int exponent = (int)val;
-        val -= (int)val;
-        val *= 1000;
-        return new Currency(val,exponent) + new Currency(200,0);
-    }
+    
 }
   

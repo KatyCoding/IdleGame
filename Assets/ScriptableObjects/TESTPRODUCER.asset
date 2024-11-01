@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74a5b7ae3e5846548940b09cf16eb409, type: 3}
+  m_Name: TESTPRODUCER
+  m_EditorClassIdentifier: 
+  upgrades:
+  - AmountNeeded: 1
+    MultiplierToAdd: 10
+    CooldownMultiplier: 0.5
+  - AmountNeeded: 2
+    MultiplierToAdd: 10
+    CooldownMultiplier: 0.5
+  - AmountNeeded: 3
+    MultiplierToAdd: 10
+    CooldownMultiplier: 0
+  - AmountNeeded: 4
+    MultiplierToAdd: 20
+    CooldownMultiplier: 0
+  - AmountNeeded: 5
+    MultiplierToAdd: 20
+    CooldownMultiplier: 0
+  - AmountNeeded: 6
+    MultiplierToAdd: 20
+    CooldownMultiplier: 0
+  - AmountNeeded: 7
+    MultiplierToAdd: 20
+    CooldownMultiplier: 0
+  - AmountNeeded: 8
+    MultiplierToAdd: 20
+    CooldownMultiplier: 0
+  - AmountNeeded: 9
+    MultiplierToAdd: 20
+    CooldownMultiplier: 0
+  - AmountNeeded: 10
+    MultiplierToAdd: 20
+    CooldownMultiplier: 0
+  - AmountNeeded: 11
+    MultiplierToAdd: 20
+    CooldownMultiplier: 0
+  - AmountNeeded: 12
+    MultiplierToAdd: 20
+    CooldownMultiplier: 0

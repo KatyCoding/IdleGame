@@ -29,8 +29,6 @@ public class Currency
         baseVal = tempHidden;
         exponent = tempExponent;
     }
-    //[HideInInspector]
-    //public int baseVal = 1;
     public int exponent = 1;
     [FormerlySerializedAs("hiddenBaseVal")] [SerializeField]
     public float baseVal = 1;
@@ -74,6 +72,10 @@ public class Currency
                 return new Currency(val, a.exponent);
             }
 
+            if (a.exponent == 0)
+            {
+                return new Currency(0, 0);
+            }
             val *= 1000;
             return new Currency(val,a.exponent-1);
         }
@@ -160,16 +162,7 @@ public class Currency
         rep += " " + ExponentString();
         return rep;
     }
-    /*
-    public static Currency operator >(Currency a, Currency b)
-    {
-        
-    }
-    public static Currency operator <(Currency a, Currency b)
-    {
-        
-    }
-    private void []
-    */
+    
+   
     
 }

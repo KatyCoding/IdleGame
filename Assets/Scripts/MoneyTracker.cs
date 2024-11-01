@@ -28,7 +28,7 @@ public class MoneyTracker : MonoBehaviour
     {
         if (instance == null)
         {
-            money = new Currency(1.5f, 1);
+            money = new Currency(1, 0);
             instance = this;
             return;
         }
@@ -38,6 +38,6 @@ public class MoneyTracker : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(money.baseVal.ToString());
+        //Debug.Log(money.baseVal.ToString());
     }
 }

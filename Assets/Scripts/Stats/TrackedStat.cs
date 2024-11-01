@@ -4,8 +4,8 @@ using System.Collections.Generic;
 public class TrackedStat
 {
     
-    public int baseValue;
-    public int currentValue
+    public float baseValue;
+    public float currentValue
     {
         get { return CurrentValue(); }
     }
@@ -16,14 +16,13 @@ public class TrackedStat
         modifiers.Add(mod);
     }
 
-    private int CurrentValue()
+    private float CurrentValue()
     {
-        int val = baseValue;
+        float val = baseValue;
         foreach (var mod in modifiers)
         {
-            val += mod.modValue;
+            val *= mod.modValue;
         }
-
         return val;
     }
 }
