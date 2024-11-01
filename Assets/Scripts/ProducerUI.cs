@@ -15,7 +15,7 @@ public class ProducerUI : MonoBehaviour
         NumberOwnedText.text = producerRef.numberOwned.ToString();
         ProductionAmountText.text = producerRef.GetCurrentProductionAmount().ToString();
         ProductionProgress.value = producerRef.GetProductionProgress();
-        Debug.Log(ProductionProgress.value);
+        //Debug.Log(ProductionProgress.value);
         BuyCostText.text = producerRef.GetCost(1).ToString();
     }
 
