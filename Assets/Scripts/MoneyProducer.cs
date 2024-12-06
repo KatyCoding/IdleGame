@@ -13,6 +13,13 @@ public class MoneyProducer : MonoBehaviour
     [SerializeField] private ProducerUpgradeProgression upgradeProgression;
     //Modify each one so that the starting cost isn't 0 and the curves are all different. Maybe leave the end cost the same though.
     [SerializeField] private AnimationCurve BuyingCost;
+    [SerializeField] private float BuyingCostMultiplier = 1;
+    //TODO
+    /// <summary>
+    /// Take anim curve and change from cost value to cost multiplier.
+    /// Add base cost value, multiply by number bought, then multiply by curve value at that number?
+    /// </summary>
+    
     private List<SerializedUpgrade> upgradesList;
     private float timer = 0;
     
@@ -45,7 +52,7 @@ public class MoneyProducer : MonoBehaviour
     }
     public Currency GetCost(int amountToBuy)
     {
-        float val = BuyingCost.Evaluate(numberOwned + amountToBuy);
+        float val = BuyingCost.Evaluate(numberOwned + amountToBuy) * BuyingCostMultiplier;
         int exponent = (int)val;
         val -= (int)val;
         val *= 1000;
